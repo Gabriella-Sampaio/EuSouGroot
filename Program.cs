@@ -1,19 +1,42 @@
 ﻿Console.Clear();
 
 string pergunta = "",
-       resposta = "Eu sou o Groot";
+nomeUsuário;
 
-Console.WriteLine("Converse com o Groot");
+Console.WriteLine("--- Chat com o Groot ---\n");
+Console.Write("Digite deu nome: ");
+nomeUsuário = Console.ReadLine()!;
+
+Thread.Sleep(500); Console.Clear();
 
 while (pergunta != "TCHAU")
 {
-    Console.Write("Pergunta: ");
-    pergunta = Console.ReadLine()!.ToUpper();
+    Console.Write($"{nomeUsuário}: ");
+    pergunta = Console.ReadLine()!.ToUpper().Trim();
+    if (pergunta == "TCHAU")
+    {
+        Resposta("Eu sou Groot!");
+    }
 
-    Console.Write($"Resposta: ");
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine($"{resposta}\n");
-    Console.ResetColor();
+    else
+    {
+        Resposta("Eu sou Groot.");
+    }
 }
 
-Console.WriteLine("Boa conversa, tchau");
+Thread.Sleep(1000);Console.Clear();
+
+Console.ForegroundColor = ConsoleColor.Red;
+Console.WriteLine("Chat encerrado");
+Console.ResetColor();
+
+string Resposta (string mensagem)
+{
+    Thread.Sleep(300);
+    Console.Write("                       Groot: ");
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"{mensagem}\n");
+    Console.ResetColor();
+    Thread.Sleep(300);
+    return mensagem;
+}
